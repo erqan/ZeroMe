@@ -4408,7 +4408,8 @@ function clone(obj) {
     };
 
     Post.prototype.handleQuoteClick = function() {
-      return window.Page.content_feed.post_create.field_post.node.value = "> " + this.row.body;
+      window.Page.content_feed.post_create.field_post.node.value = "> " + this.row.body.replace(/\n/g, "\n> ");
+      return window.Page.content_feed.post_create.field_post.autoHeight();
     };
 
     Post.prototype.handleCommentSubmit = function() {
