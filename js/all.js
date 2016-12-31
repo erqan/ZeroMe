@@ -4277,6 +4277,7 @@ function clone(obj) {
       this.handleCommentDelete = __bind(this.handleCommentDelete, this);
       this.handleCommentSave = __bind(this.handleCommentSave, this);
       this.handleCommentSubmit = __bind(this.handleCommentSubmit, this);
+      this.handleQuoteClick = __bind(this.handleQuoteClick, this);
       this.handleCommentClick = __bind(this.handleCommentClick, this);
       this.handleLikeClick = __bind(this.handleLikeClick, this);
       this.handlePostDelete = __bind(this.handlePostDelete, this);
@@ -4404,6 +4405,10 @@ function clone(obj) {
         })(this)), 600);
       }
       return false;
+    };
+
+    Post.prototype.handleQuoteClick = function() {
+      return window.Page.content_feed.post_create.field_post.node.value = "> " + this.row.body;
     };
 
     Post.prototype.handleCommentSubmit = function() {
@@ -4684,7 +4689,10 @@ function clone(obj) {
             classes: {
               active: (_ref3 = Page.user) != null ? _ref3.likes[post_uri] : void 0
             }
-          }), this.row.likes ? this.row.likes : void 0)
+          }), this.row.likes ? this.row.likes : void 0), h("a.icon.icon-quote.link", {
+            href: "#quote",
+            onclick: this.handleQuoteClick
+          }, "Quote")
         ]), this.renderComments()
       ]);
     };

@@ -72,6 +72,9 @@ class Post extends Class
 			), 600
 		return false
 
+	handleQuoteClick: =>
+		window.Page.content_feed.post_create.field_post.node.value = "> " + @row.body
+
 	handleCommentSubmit: =>
 		timer_loading = setTimeout ( => @field_comment.loading = true ), 100  # Only add loading message if takes more than 100ms
 		[site, post_uri] = @row.key.split("-")
@@ -234,7 +237,8 @@ class Post extends Class
 				h("a.like.link", {classes: {active: Page.user?.likes[post_uri], loading: @submitting_like, "like-zero": @row.likes == 0}, href: "#Like", onclick: @handleLikeClick},
 					h("div.icon.icon-heart", {classes: {active: Page.user?.likes[post_uri]}}),
 					if @row.likes then @row.likes
-				)
+				),
+				h("a.icon.icon-quote.link", {href: "#quote", onclick: @handleQuoteClick}, "Quote")
 				# h("a.icon.icon-share.link", {href: "#Share"}, "Share"),
 			]),
 			@renderComments()
