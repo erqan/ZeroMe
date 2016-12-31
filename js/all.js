@@ -4408,8 +4408,9 @@ function clone(obj) {
     };
 
     Post.prototype.handleQuoteClick = function() {
-      window.Page.content_feed.post_create.field_post.node.value = "> " + this.row.body.replace(/\n/g, "\n> ");
-      return window.Page.content_feed.post_create.field_post.autoHeight();
+      window.Page.content.post_create.field_post.node.value = "> " + this.row.body.replace(/\n/g, "\n> ");
+      window.Page.content.post_create.field_post.autoHeight();
+      return false;
     };
 
     Post.prototype.handleCommentSubmit = function() {

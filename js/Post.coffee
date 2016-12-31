@@ -73,8 +73,9 @@ class Post extends Class
 		return false
 
 	handleQuoteClick: =>
-		window.Page.content_feed.post_create.field_post.node.value = "> " + @row.body.replace(/\n/g, "\n> ")
-		window.Page.content_feed.post_create.field_post.autoHeight()
+		window.Page.content.post_create.field_post.node.value = "> " + @row.body.replace(/\n/g, "\n> ")
+		window.Page.content.post_create.field_post.autoHeight()
+		return false
 
 	handleCommentSubmit: =>
 		timer_loading = setTimeout ( => @field_comment.loading = true ), 100  # Only add loading message if takes more than 100ms
